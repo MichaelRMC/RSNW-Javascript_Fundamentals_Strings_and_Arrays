@@ -20,7 +20,7 @@ function sumArray(arr) {
 	for (let i = 0; i < arr.length; i++) {
 		sum += array[i];
 	}
-	return sum
+	return sum;
 }
 
 /**
@@ -31,7 +31,7 @@ function sumArray(arr) {
 */
 
 function findMax(arr) {
-	return Math.max(...arr)
+	return Math.max(...arr);
 }
 
 /**
@@ -41,7 +41,7 @@ function findMax(arr) {
 */
 
 function filterOdds(arr) {
-	return arr.filter((num) => num % 2 === 1)
+	return arr.filter((num) => num % 2 === 1);
 }
 
 /**
@@ -51,8 +51,8 @@ function filterOdds(arr) {
 */
 
 function reverseArray(arr) {
-	return arr.reverse()
-} 
+	return arr.reverse();
+}
 
 /**
 	Count Occurrences of a Specific Element
@@ -63,7 +63,7 @@ function reverseArray(arr) {
 function countOccurrences(arr, target) {
 	let result = 0;
 	for (let i = 0; i < arr.length; i++) {
-		if ( arr[i] === target ) {
+		if (arr[i] === target) {
 			result++;
 		}
 	}
@@ -77,7 +77,22 @@ function countOccurrences(arr, target) {
 */
 
 function hasDuplicates(arr) {
-	
+	let numsSeen = {};
+
+	for (const currentNum of arr) {
+		if (numsSeen[currentNum]) {
+			numsSeen[currentNum] += 1;
+		} else {
+			numsSeen[currentNum] = 1;
+		}
+	}
+
+	for (const num in numsSeen) {
+		if (numsSeen[num] > 1) {
+			return true;
+		}
+	}
+	return false;
 }
 
 /**
@@ -87,5 +102,17 @@ function hasDuplicates(arr) {
 */
 
 function twoSum(arr, target) {
-	
+	let indexes = [];
+
+	for (let i = 0; i < nums.length; i++) {
+		for (let j = i + 1; j < nums.length; j++) {
+			if (nums[i] + nums[j] === target) {
+				indexes.push(i);
+				indexes.push(j);
+			}
+		}
+	}
+	return indexes;
 }
+
+twoSum([2, 7, 11, 15], 9);
